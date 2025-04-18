@@ -12,12 +12,13 @@ public class Playlist {
         this.title = title;
         playlist =new ArrayList<>();
     }
-    public void editTitle (String title,String password) {
+    public void editTitle (String newtitle,String password) {
         try {
             if (!(owner.getPassword()==password)) {
                 throw new InvalidOperationException("Password is not correct");
             }
-            this.title = title;
+            System.out.println("edit music is successful");
+            this.title =newtitle;
         }catch (InvalidOperationException e) {
             System.out.println(e.getMessage());
         }
@@ -32,7 +33,7 @@ public class Playlist {
                 throw new InvalidOperationException("This music is already in the playlist.");
             }
             playlist.add(music);
-            System.out.println(music.title+" add music to playist !!!!!!");
+            System.out.println(music.getTitle()+" add music to playist !!!!!!");
         }catch (InvalidOperationException e) {
             System.out.println(e.getMessage());
         }
@@ -47,20 +48,23 @@ public class Playlist {
                 throw new InvalidOperationException("This music is not in the playlist");
             }
             playlist.remove(music);
-            System.out.println(music.title +" remove successful");
+            System.out.println(music.getTitle() +" remove successful");
         }catch (InvalidOperationException e) {
             System.out.println(e.getMessage());
         }
 
     }
     public ArrayList<Music> searchInPlaylist(String title) {
-        ArrayList<Music> result = new ArrayList<>();
-        for (Music m :playlist) {
-            if (m.title == title){
-                result.add(m);
+            ArrayList<Music> result = new ArrayList<>();
+            for (Music m :playlist) {
+                if (m.getTitle() == title){
+                    result.add(m);
+                    System.out.println("found: "+ m.getTitle() + " by "+ m.getSinger().getUsername());
+                }
             }
-        }
-        return result;
+            return result;
+
+
     }
     public void playPlaylist() {
         Scanner scanner = new Scanner(System.in);

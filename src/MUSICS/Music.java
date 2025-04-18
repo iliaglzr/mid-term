@@ -3,14 +3,14 @@ package MUSICS;
 import java.util.ArrayList;
 
 public class Music {
-    String title;
-    User singer;
+    private String title;
+    private User singer;
     int numberOfStream;
     public static ArrayList<Music> allMusics = new ArrayList<>();
 
     public Music(String title, User singer) {
-        this.title = title;
-        this.singer = singer;
+        setTitle(title);
+        setSinger(singer);
         numberOfStream = 0;
         allMusics.add(this);
     }
@@ -43,6 +43,22 @@ public class Music {
             return null;
         }
 
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public User getSinger() {
+        return singer;
+    }
+
+    public void setSinger(User singer) {
+        this.singer=singer;
     }
 }
 

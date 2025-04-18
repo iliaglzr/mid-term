@@ -3,6 +3,8 @@ import MUSICS.Music;
 import MUSICS.Playlist;
 import MUSICS.User;
 
+import java.util.ArrayList;
+
 public class Main {
     public static void main(String[] args) {
         try {
@@ -30,10 +32,12 @@ public class Main {
             Playlist playlist1 =user1.getPlaylists().get(0);
 
             playlist1.addMusic(music1,"2640iliA");
-            playlist1.addMusic(music2,"2640beenii");
+            playlist1.addMusic(music2,"2640iliA");
 
             playlist1.removeMusic(music1,"2640iliA");
 
+
+            playlist1.searchInPlaylist("Baroon");
         }catch (InvalidOperationException e) {
             System.out.println("Error: " + e.getMessage());
         }
