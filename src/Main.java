@@ -30,7 +30,7 @@ public class Main {
             Playlist playlist1 =user1.getPlaylists().get(0);
 
             playlist1.addMusic(music1,"2640iliA");
-            playlist1.addMusic(music2,"2640benii");
+            playlist1.addMusic(music2,"2640beenii");
 
             playlist1.removeMusic(music1,"2640iliA");
 

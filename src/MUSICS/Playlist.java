@@ -13,31 +13,45 @@ public class Playlist {
         playlist =new ArrayList<>();
     }
     public void editTitle (String title,String password) {
-        if (!(owner.getPassword()==password)) {
-            throw new InvalidOperationException("Password is not correct");
+        try {
+            if (!(owner.getPassword()==password)) {
+                throw new InvalidOperationException("Password is not correct");
+            }
+            this.title = title;
+        }catch (InvalidOperationException e) {
+            System.out.println(e.getMessage());
         }
-        this.title = title;
 
     }
     public void addMusic(Music music, String password) {
-        if (!(owner.getPassword()== password)) {
-            throw new InvalidOperationException("Password is not correct");
+        try {
+            if (!(owner.getPassword()== password)) {
+                throw new InvalidOperationException("Password is not correct");
+            }
+            if (playlist.contains(music)) {
+                throw new InvalidOperationException("This music is already in the playlist.");
+            }
+            playlist.add(music);
+            System.out.println(music.title+" add music to playist !!!!!!");
+        }catch (InvalidOperationException e) {
+            System.out.println(e.getMessage());
         }
-        if (playlist.contains(music)) {
-            throw new InvalidOperationException("This music is already in the playlist.");
-        }
-        playlist.add(music);
-        System.out.println(music.title+" add music to playist !!!!!!");
+
     }
     public void removeMusic(Music music, String password) {
-        if (!(owner.getPassword()==password)) {
-            throw new InvalidOperationException("Password is not correct");
+        try {
+            if (!(owner.getPassword()==password)) {
+                throw new InvalidOperationException("Password is not correct");
+            }
+            if (!(playlist.contains(music))) {
+                throw new InvalidOperationException("This music is not in the playlist");
+            }
+            playlist.remove(music);
+            System.out.println(music.title +" remove successful");
+        }catch (InvalidOperationException e) {
+            System.out.println(e.getMessage());
         }
-        if (!(playlist.contains(music))) {
-            throw new InvalidOperationException("This music is not in the playlist");
-        }
-        playlist.remove(music);
-        System.out.println(music.title +" remove successful");
+
     }
     public ArrayList<Music> searchInPlaylist(String title) {
         ArrayList<Music> result = new ArrayList<>();
